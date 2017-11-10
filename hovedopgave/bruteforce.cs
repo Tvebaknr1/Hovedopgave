@@ -13,7 +13,7 @@ namespace hovedopgave
             DateTime start = DateTime.Now;
             List<char> password = new List<char>();
             password.Add(char.MinValue);
-            while ((DateTime.Now - start).TotalMinutes < 1)
+            while ((DateTime.Now - start).TotalMinutes < 10)
             {
                 //iresse to next legal char
                 increaseToNextLegalChar(password, reg);

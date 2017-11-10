@@ -90,9 +90,31 @@ namespace hovedopgave.Tests
             Assert.IsTrue(Program.attack(list, bruteforce) == 0);
         }
         [TestMethod()]
+        public void attackTestNumberAtStart()
+        {
+            string[] list = { "1password" };
+            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
+            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
+            attackMethod DictinaryAttack = new DictinaryAttack();
+            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
+            attackMethod bruteforce = new bruteforce();
+            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
+        }
+        [TestMethod()]
         public void attackTest1995()
         {
             string[] list = { "password1995" };
+            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
+            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
+            attackMethod DictinaryAttack = new DictinaryAttack();
+            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
+            attackMethod bruteforce = new bruteforce();
+            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
+        }
+        [TestMethod()]
+        public void attackTestyearatstart()
+        {
+            string[] list = { "1995password" };
             attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
             Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
             attackMethod DictinaryAttack = new DictinaryAttack();
@@ -126,6 +148,61 @@ namespace hovedopgave.Tests
         public void attackTestSemiCAPS()
         {
             string[] list = { "PaSsWoRd" };
+            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
+            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
+            attackMethod DictinaryAttack = new DictinaryAttack();
+            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
+            attackMethod bruteforce = new bruteforce();
+            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
+        }
+        [TestMethod()]
+        public void attacktesttwowords()
+        {
+            string[] list = { "passworddragon" };
+            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
+            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
+            attackMethod DictinaryAttack = new DictinaryAttack();
+            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
+            attackMethod bruteforce = new bruteforce();
+            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
+        }
+        [TestMethod()]
+        public void attacktestTwoWords()
+        {
+            string[] list = { "PasswordDragon" };
+            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
+            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
+            attackMethod DictinaryAttack = new DictinaryAttack();
+            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
+            attackMethod bruteforce = new bruteforce();
+            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
+        }
+        [TestMethod()]
+        public void attacktestThreeWords()
+        {
+            string[] list = { "letmein" };
+            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
+            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
+            attackMethod DictinaryAttack = new DictinaryAttack();
+            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
+            attackMethod bruteforce = new bruteforce();
+            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
+        }
+        [TestMethod()]
+        public void attacktestTwoWordsWithNumber()
+        {
+            string[] list = { "PasswordDragon1" };
+            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
+            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
+            attackMethod DictinaryAttack = new DictinaryAttack();
+            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
+            attackMethod bruteforce = new bruteforce();
+            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
+        }
+        [TestMethod()]
+        public void attacktestTwoWordsWithyear()
+        {
+            string[] list = { "PasswordDragon1995" };
             attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
             Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
             attackMethod DictinaryAttack = new DictinaryAttack();
