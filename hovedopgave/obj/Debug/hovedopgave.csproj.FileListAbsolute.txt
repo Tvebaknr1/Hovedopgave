@@ -1,0 +1,6 @@
+c:\users\emil ulrik christoff\documents\visual studio 2015\Projects\hovedopgave\hovedopgave\bin\Debug\hovedopgave.exe.config
+c:\users\emil ulrik christoff\documents\visual studio 2015\Projects\hovedopgave\hovedopgave\bin\Debug\hovedopgave.exe
+c:\users\emil ulrik christoff\documents\visual studio 2015\Projects\hovedopgave\hovedopgave\bin\Debug\hovedopgave.pdb
+c:\users\emil ulrik christoff\documents\visual studio 2015\Projects\hovedopgave\hovedopgave\obj\Debug\hovedopgave.csprojResolveAssemblyReference.cache
+c:\users\emil ulrik christoff\documents\visual studio 2015\Projects\hovedopgave\hovedopgave\obj\Debug\hovedopgave.exe
+c:\users\emil ulrik christoff\documents\visual studio 2015\Projects\hovedopgave\hovedopgave\obj\Debug\hovedopgave.pdb

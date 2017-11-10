@@ -1,0 +1,8 @@
+c:\users\emil ulrik christoff\documents\visual studio 2015\Projects\hovedopgave\hovedopgaveTests\bin\Debug\hovedopgaveTests.dll
+c:\users\emil ulrik christoff\documents\visual studio 2015\Projects\hovedopgave\hovedopgaveTests\bin\Debug\hovedopgaveTests.pdb
+c:\users\emil ulrik christoff\documents\visual studio 2015\Projects\hovedopgave\hovedopgaveTests\bin\Debug\hovedopgave.exe
+c:\users\emil ulrik christoff\documents\visual studio 2015\Projects\hovedopgave\hovedopgaveTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+c:\users\emil ulrik christoff\documents\visual studio 2015\Projects\hovedopgave\hovedopgaveTests\bin\Debug\hovedopgave.pdb
+c:\users\emil ulrik christoff\documents\visual studio 2015\Projects\hovedopgave\hovedopgaveTests\obj\Debug\hovedopgaveTests.csprojResolveAssemblyReference.cache
+c:\users\emil ulrik christoff\documents\visual studio 2015\Projects\hovedopgave\hovedopgaveTests\obj\Debug\hovedopgaveTests.dll
+c:\users\emil ulrik christoff\documents\visual studio 2015\Projects\hovedopgave\hovedopgaveTests\obj\Debug\hovedopgaveTests.pdb
