@@ -1,8 +1,11 @@
-﻿namespace hovedopgave
+﻿using System;
+
+namespace hovedopgave
 {
     public class DictinaryAttackBasic : attackMethod
     {
         string[] Dictinary;
+        hashfunction hashfunction;
         public DictinaryAttackBasic()
         {
             //fill dictinary
@@ -18,11 +21,11 @@
             return "";
         }
 
-        public string attackhash(string password, hashfunction hashfunction)
+        public string attackhash(string HashedPassword, Func<string, string> hash)
         {
             foreach (string str in Dictinary)
             {
-                if (hashfunction.hash(password).Equals(str))
+                if (hash(str).Equals(HashedPassword))
                     return str;
             }
             return "";

@@ -63,6 +63,7 @@
     <Compile Include="DictinaryAttack.cs" />
     <Compile Include="DictinaryAttackBasic.cs" />
     <Compile Include="hashfunction.cs" />
+    <Compile Include="md5.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -70,6 +71,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="rainbowTable.cs" />
+    <Compile Include="sha256.cs" />
+    <Compile Include="sha512.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

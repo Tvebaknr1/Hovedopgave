@@ -210,5 +210,18 @@ namespace hovedopgave.Tests
             attackMethod bruteforce = new bruteforce();
             Assert.IsTrue(Program.attack(list, bruteforce) == 0);
         }
+        [TestMethod()]
+        public void hashedattacktest()
+        {
+            //password hashed in MD5
+            string[] list = { "5f4dcc3b5aa765d61d8327deb882cf99" };
+            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
+            hashfunction md5 = new md5();
+            Assert.IsTrue(Program.attackhash(list, DictinaryAttackBasic,md5.hash) == 1);
+            attackMethod DictinaryAttack = new DictinaryAttack();
+            Assert.IsTrue(Program.attackhash(list, DictinaryAttack,md5.hash) == 1);
+            attackMethod bruteforce = new bruteforce();
+            Assert.IsTrue(Program.attackhash(list, bruteforce,md5.hash) == 0);
+        }
     }
 }

@@ -1,8 +1,10 @@
-﻿namespace hovedopgave
+﻿using System;
+
+namespace hovedopgave
 {
     public interface attackMethod
     {
         string attack(string hash);
-        string attackhash(string password, hashfunction hashfunction);
+        string attackhash(string password, Func<string, string> hash);
     }
 }

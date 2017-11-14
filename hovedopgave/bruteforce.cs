@@ -20,7 +20,7 @@ namespace hovedopgave
                 //test if password
 
                 if (string.Join("", password.ToArray()).Equals(clearText))
-                    return Convert.ToString(password);
+                    return string.Join("", password.ToArray());
             }
             return "";
         }
@@ -46,9 +46,22 @@ namespace hovedopgave
             }
         }
 
-        public string attackhash(string password, hashfunction hashfunction)
+        public string attackhash(string HashedPassword, Func<string, string> hash )
         {
-            throw new NotImplementedException();
+            Regex reg = new Regex(@"[A-Za-z0-9]");
+            DateTime start = DateTime.Now;
+            List<char> password = new List<char>();
+            password.Add(char.MinValue);
+            while ((DateTime.Now - start).TotalMinutes < 10)
+            {
+                //iresse to next legal char
+                increaseToNextLegalChar(password, reg);
+                //test if password
+
+                if (hash(string.Join("", password.ToArray())).Equals(HashedPassword))
+                    return string.Join("", password.ToArray());
+            }
+            return "false";
         }
 
 
