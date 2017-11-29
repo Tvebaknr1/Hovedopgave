@@ -3,28 +3,28 @@ using System.Collections.Generic;
 
 namespace hovedopgave
 {
-    public class DictinaryAttack : attackMethod
+    public class DictinaryAttack : IAttackMethod
     {
         string[] Dictinary;
         public DictinaryAttack()
         {
             //fill dictinary
-            Dictinary = Program.getdictinaryfile();
+            Dictinary = new Fileloader().getdictinaryfile();
         }
         
         public string attack(string password)
         {
             foreach (string str in Dictinary)
             {
-                string doubleword = doubleWord(nonhashfunction,str, password);
-                string tripleword = tripleWord(nonhashfunction, str, password);
+                //string doubleword = doubleWord(nonhashfunction,str, password);
+                //string tripleword = tripleWord(nonhashfunction, str, password);
                 string number = addnumber(nonhashfunction, str, password);
                 if (str.Equals(password))
                     return str;
-                else if (!string.IsNullOrEmpty(doubleword))
-                    return doubleword;
-                else if (!string.IsNullOrEmpty(tripleword))
-                    return tripleword;
+                //else if (!string.IsNullOrEmpty(doubleword))
+                //return doubleword;
+                //else if (!string.IsNullOrEmpty(tripleword))
+                //return tripleword;
                 else if (!string.IsNullOrEmpty(number))
                     return number;
             }
@@ -34,15 +34,15 @@ namespace hovedopgave
         {
             foreach (string str in Dictinary)
             {
-                string doubleword = doubleWord(hashfunction, str, HashedPassword);
-                string tripleword = tripleWord(hashfunction, str, HashedPassword);
+                //string doubleword = doubleWord(hashfunction, str, HashedPassword);
+                //string tripleword = tripleWord(hashfunction, str, HashedPassword);
                 string number = addnumber(hashfunction, str, HashedPassword);
                 if (str.Equals(HashedPassword))
                     return str;
-                else if (!string.IsNullOrEmpty(doubleword))
-                    return doubleword;
-                else if (!string.IsNullOrEmpty(tripleword))
-                    return tripleword;
+                //else if (!string.IsNullOrEmpty(doubleword))
+                    //return doubleword;
+                //else if (!string.IsNullOrEmpty(tripleword))
+                    //return tripleword;
                 else if (!string.IsNullOrEmpty(number))
                     return number;
             }
@@ -68,7 +68,7 @@ namespace hovedopgave
                 string number = addnumber(hash,str + str2, password);
                 if (hash((str + str2)).Equals(password))
                     return str + str2;
-                else if (string.IsNullOrEmpty(number))
+                else if (!string.IsNullOrEmpty(number))
                     return number;
             }
             return "";
@@ -82,7 +82,7 @@ namespace hovedopgave
                     string number = addnumber(hash,str + str2 + str3, password);
                     if (hash(str + str2 + str3).Equals(password))
                         return str + str2 + str3;
-                    else if (string.IsNullOrEmpty(number))
+                    else if (!string.IsNullOrEmpty(number))
                         return number;
                 }
             }
@@ -97,7 +97,7 @@ namespace hovedopgave
                 else if (hash((i + str)).Equals(password))
                     return i + str;
             }
-            for (int i = 1900; i < 160; i++)
+            for (int i = 1900; i < 2100; i++)
             {
                 if (hash((str + i)).Equals(password))
                     return str + i;

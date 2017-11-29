@@ -1,18 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace hovedopgave
 {
-    public class DictinaryAttackBasic : IAttackMethod
+    class DictinaryAttackWithCommonPasswords : IAttackMethod
     {
-        string[] Dictinary;
-        public DictinaryAttackBasic()
+        string[] passwords;
+        public DictinaryAttackWithCommonPasswords()
         {
             //fill dictinary
-            Dictinary = new Fileloader().getdictinaryfile();
+            passwords = new Fileloader().getPasswordFile();
         }
         public string attack(string password)
         {
-            foreach (string str in Dictinary)
+            foreach (string str in passwords)
             {
                 if (str.Equals(password))
                     return str;
@@ -22,7 +26,7 @@ namespace hovedopgave
 
         public string attackhash(string HashedPassword, Func<string, string> hash)
         {
-            foreach (string str in Dictinary)
+            foreach (string str in passwords)
             {
                 if (hash(str).Equals(HashedPassword))
                     return str;

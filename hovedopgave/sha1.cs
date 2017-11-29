@@ -4,17 +4,17 @@ using System.Text;
 
 namespace hovedopgave
 {
-    public class md5 : IHashFunction
+    public class sha1 : IHashFunction
     {
-        private MD5 myMD5;
-        public md5()
+        SHA1 mySHA1;
+        public sha1()
         {
-            myMD5 = MD5.Create();
+            mySHA1 = SHA1Managed.Create();
         }
         public string hash(string str)
         {
             // Convert the input string to a byte array and compute the hash.
-            byte[] data = myMD5.ComputeHash(Encoding.UTF8.GetBytes(str));
+            byte[] data = mySHA1.ComputeHash(Encoding.UTF8.GetBytes(str));
 
             // Create a new Stringbuilder to collect the bytes
             // and create a string.
@@ -29,14 +29,12 @@ namespace hovedopgave
 
             // Return the hexadecimal string.
             return sBuilder.ToString();
-            //return Encoding.UTF8.GetString(myMD5.ComputeHash(Encoding.UTF8.GetBytes(str)));
         }
 
         public string hash32(string str)
         {
-
             // Convert the input string to a byte array and compute the hash.
-            byte[] data = myMD5.ComputeHash(Encoding.UTF32.GetBytes(str));
+            byte[] data = mySHA1.ComputeHash(Encoding.UTF32.GetBytes(str));
 
             // Create a new Stringbuilder to collect the bytes
             // and create a string.
@@ -51,14 +49,12 @@ namespace hovedopgave
 
             // Return the hexadecimal string.
             return sBuilder.ToString();
-        
-            //return Encoding.UTF32.GetString(myMD5.ComputeHash(Encoding.UTF32.GetBytes(str)));
         }
 
         public string hashASCII(string str)
         {
             // Convert the input string to a byte array and compute the hash.
-            byte[] data = myMD5.ComputeHash(Encoding.ASCII.GetBytes(str));
+            byte[] data = mySHA1.ComputeHash(Encoding.ASCII.GetBytes(str));
 
             // Create a new Stringbuilder to collect the bytes
             // and create a string.
@@ -73,7 +69,6 @@ namespace hovedopgave
 
             // Return the hexadecimal string.
             return sBuilder.ToString();
-            //return Encoding.ASCII.GetString(myMD5.ComputeHash(Encoding.ASCII.GetBytes(str)));
         }
     }
 }

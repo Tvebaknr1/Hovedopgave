@@ -14,12 +14,56 @@ namespace hovedopgave.Tests
         [TestMethod()]
         public void dictinaryfile()
         {
-            string file = System.IO.File.ReadAllText(Program.dictinaryfile);
+            string file = System.IO.File.ReadAllText(Fileloader.dictinaryfile);
             Assert.IsFalse(String.IsNullOrEmpty(file));
-            file = System.IO.File.ReadAllText(Program.passwordfile);
+            file = System.IO.File.ReadAllText(Fileloader.passwordfile);
             Assert.IsFalse(String.IsNullOrEmpty(file));
         }
-
+        [TestMethod()]
+        public void rainbowfileSha1()
+        {
+            string file = System.IO.File.ReadAllText(Fileloader.RainbowfileSha1);
+            if (String.IsNullOrEmpty(file))
+            {
+                RainbowTableGenerator.generateRainbow(Fileloader.passwordfile, Fileloader.RainbowfileSha1, new sha1());
+                file = System.IO.File.ReadAllText(Fileloader.RainbowfileSha1);
+            }
+            Assert.IsFalse(String.IsNullOrEmpty(file));
+        }
+        [TestMethod()]
+        public void rainbowfileSha256()
+        {
+            string file = System.IO.File.ReadAllText(Fileloader.RainbowfileSha256);
+            if (String.IsNullOrEmpty(file))
+            {
+                RainbowTableGenerator.generateRainbow(Fileloader.passwordfile, Fileloader.RainbowfileSha256, new sha256());
+                file = System.IO.File.ReadAllText(Fileloader.RainbowfileSha256);
+            }
+            Assert.IsFalse(String.IsNullOrEmpty(file));
+        }
+        [TestMethod()]
+        public void rainbowfileSha512()
+        {
+            string file = System.IO.File.ReadAllText(Fileloader.RainbowfileSha512);
+            if (String.IsNullOrEmpty(file))
+            {
+                RainbowTableGenerator.generateRainbow(Fileloader.passwordfile, Fileloader.RainbowfileSha512, new sha512());
+                file = System.IO.File.ReadAllText(Fileloader.RainbowfileSha512);
+            }
+            Assert.IsFalse(String.IsNullOrEmpty(file));
+        }
+        [TestMethod()]
+        public void rainbowfileMD5()
+        {
+            string file = System.IO.File.ReadAllText(Fileloader.RainbowfileMD5);
+            if (String.IsNullOrEmpty(file))
+            {
+                RainbowTableGenerator.generateRainbow(Fileloader.passwordfile, Fileloader.RainbowfileMD5, new md5());
+                file = System.IO.File.ReadAllText(Fileloader.RainbowfileMD5);
+            }
+            Assert.IsFalse(String.IsNullOrEmpty(file));
+        }
+        //test metode til at teste hvormange den få i en password batch
         [TestMethod()]
         public void MainTest()
         {
@@ -34,194 +78,6 @@ namespace hovedopgave.Tests
             //test 
         }
         
-        [TestMethod()]
-        public void attackTestSimplePassword()
-        {
-            string[] list = { "password" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 1);
-            attackMethod DictinaryAttack = new DictinaryAttack();
-            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
-        }
-        [TestMethod()]
-        public void attackTestRandomPassword()
-        {
-            string[] list = { "sfhshfgshfhoifaofh0sfåhiug" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
-            attackMethod DictinaryAttack = new DictinaryAttack();
-            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 0);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
-        }
-        [TestMethod()]
-        public void attackTestRepeatWord()
-        {
-            string[] list = { "passwordpassword" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
-            attackMethod attackmethod = new DictinaryAttack();
-            Assert.IsTrue(Program.attack(list, attackmethod) == 1);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
-        }
-        [TestMethod()]
-        public void attackTestshortnotword()
-        {
-            string[] list = { "abc" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
-            attackMethod DictinaryAttack = new DictinaryAttack();
-            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 0);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attack(list, bruteforce) == 1);
-        }
-        [TestMethod()]
-        public void attackTestNumberAtEnd()
-        {
-            string[] list = { "password1" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
-            attackMethod DictinaryAttack = new DictinaryAttack();
-            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
-        }
-        [TestMethod()]
-        public void attackTestNumberAtStart()
-        {
-            string[] list = { "1password" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
-            attackMethod DictinaryAttack = new DictinaryAttack();
-            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
-        }
-        [TestMethod()]
-        public void attackTest1995()
-        {
-            string[] list = { "password1995" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
-            attackMethod DictinaryAttack = new DictinaryAttack();
-            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
-        }
-        [TestMethod()]
-        public void attackTestyearatstart()
-        {
-            string[] list = { "1995password" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
-            attackMethod DictinaryAttack = new DictinaryAttack();
-            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
-        }
-        [TestMethod()]
-        public void attackTestLeat()
-        {
-            string[] list = { "P455W0RD" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
-            attackMethod DictinaryAttack = new DictinaryAttack();
-            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
-        }
-        [TestMethod()]
-        public void attackTestCAPS()
-        {
-            string[] list = { "PASSWORD" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
-            attackMethod DictinaryAttack = new DictinaryAttack();
-            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
-        }
-        [TestMethod()]
-        public void attackTestSemiCAPS()
-        {
-            string[] list = { "PaSsWoRd" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
-            attackMethod DictinaryAttack = new DictinaryAttack();
-            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
-        }
-        [TestMethod()]
-        public void attacktesttwowords()
-        {
-            string[] list = { "passworddragon" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
-            attackMethod DictinaryAttack = new DictinaryAttack();
-            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
-        }
-        [TestMethod()]
-        public void attacktestTwoWords()
-        {
-            string[] list = { "PasswordDragon" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
-            attackMethod DictinaryAttack = new DictinaryAttack();
-            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
-        }
-        [TestMethod()]
-        public void attacktestThreeWords()
-        {
-            string[] list = { "letmein" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
-            attackMethod DictinaryAttack = new DictinaryAttack();
-            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
-        }
-        [TestMethod()]
-        public void attacktestTwoWordsWithNumber()
-        {
-            string[] list = { "PasswordDragon1" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
-            attackMethod DictinaryAttack = new DictinaryAttack();
-            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
-        }
-        [TestMethod()]
-        public void attacktestTwoWordsWithyear()
-        {
-            string[] list = { "PasswordDragon1995" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            Assert.IsTrue(Program.attack(list, DictinaryAttackBasic) == 0);
-            attackMethod DictinaryAttack = new DictinaryAttack();
-            Assert.IsTrue(Program.attack(list, DictinaryAttack) == 1);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attack(list, bruteforce) == 0);
-        }
-        [TestMethod()]
-        public void hashedattacktest()
-        {
-            //password hashed in MD5
-            string[] list = { "5f4dcc3b5aa765d61d8327deb882cf99" };
-            attackMethod DictinaryAttackBasic = new DictinaryAttackBasic();
-            hashfunction md5 = new md5();
-            Assert.IsTrue(Program.attackhash(list, DictinaryAttackBasic,md5.hash) == 1);
-            attackMethod DictinaryAttack = new DictinaryAttack();
-            Assert.IsTrue(Program.attackhash(list, DictinaryAttack,md5.hash) == 1);
-            attackMethod bruteforce = new bruteforce();
-            Assert.IsTrue(Program.attackhash(list, bruteforce,md5.hash) == 0);
-        }
+        
     }
 }

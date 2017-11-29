@@ -1,6 +1,6 @@
 ﻿namespace hovedopgave
 {
-    public interface hashfunction
+    public interface IHashFunction
     {
         string hash(string str);
         string hash32(string str);
